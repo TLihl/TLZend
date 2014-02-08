@@ -1,0 +1,28 @@
+<?php
+
+$title = 'Meine Artikel';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a class="btn btn-success" href="<?php echo $this->url('article', array('action'=>'add'));?>">Neuen Artikel hinzufügen</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Erstelldatum</th>
+    <th></th>
+    <th></th>
+</tr>
+<?php foreach ($articles as $article) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($article->id);?></td>
+    <td><?php echo $this->escapeHtml($article->name);?></td>
+    <td><?php echo $this->escapeHtml($article->timestamp);?></td>
+    <td><a class="btn btn-primary" href="<?php echo $this->url('article',array('action'=>'edit', 'id' => $article->id));?>">Bearbeiten</a></td>
+    <td><a class="btn btn-danger" href="<?php echo $this->url('article',array('action'=>'delete', 'id' => $article->id));?>">Entfernen</a></td>
+</tr>
+<?php endforeach; ?>
+</table>

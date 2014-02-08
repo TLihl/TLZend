@@ -1,0 +1,28 @@
+<?php
+
+$title = 'Benutzerübersicht';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a class="btn btn-success" href="<?php echo $this->url('user', array('action'=>'add'));?>">Neuen Benutzer hinzufügen</a>
+</p>
+
+<table class="table">
+<tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Erstelldatum</th>
+    <th></th>
+    <th></th>
+</tr>
+<?php foreach ($users as $user) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($user->id);?></td>
+    <td><?php echo $this->escapeHtml($user->username);?></td>
+    <td><?php echo $this->escapeHtml($user->update_timestamp);?></td>
+    <td><a class="btn btn-primary" href="<?php echo $this->url('user',array('action'=>'edit', 'id' => $user->id));?>">Bearbeiten</a></td>
+    <td><a class="btn btn-danger" href="<?php echo $this->url('user',array('action'=>'delete', 'id' => $user->id));?>">Entfernen</a></td>
+</tr>
+<?php endforeach; ?>
+</table>
