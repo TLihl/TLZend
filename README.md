@@ -1,68 +1,43 @@
 ZendSkeletonApplication
 =======================
 
-Introduction
+Einleitung
 ------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+Das ist bis jetzt eine einfache Zend-Framework 2 Anwendung. 
+Sie stellt die Grundfunktionen zum Speichern/Bearbeiten/Löschen von Artikel und Nutzerdaten zur verfügung.
+Bei der Passwortverschlüsselung wird auf den sha512-Standard gesetzt.
+Ein Datenbankabbild wird unter "data/db/database.sql" zur Verfügung gestellt.
+Das Zend Framework 2 ist nicht mit eingebunden, das kann jedoch wie bei der Installation beschrieben nachgeladen werden.
+
+Im laufe der Zeit sollen hier immer mehr Module entstehen, die euch Entwicklern die Arbeit erleichtern sollen.
+
+Also dann viel Spaß mit meinen Demomodulen!
 
 Installation
 ------------
 
-Using Composer (recommended)
+Mit dem Composer
 ----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+Empfohlen wird es das ZF2 mit dem Composer zu installieren. Den kann man direkt von https://getcomposer.org heruntergeladen werden.
+Mit der folgenden Konsolenzeile kann man dann das ZF2 herunterladen. Dabei handelt es sich um die skeleton-application, die sich direkt in das Projekt hier eingliedern wird.
+    
+	php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
 
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
+Alternativ kann man es sich auch direkt von Github herunter laden.
+   http://github.com/zendframework/ZendSkeletonApplication
 
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
-
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
-    php composer.phar self-update
-    php composer.phar install
-
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
-
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
-
-    cd my/project/dir
-    curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
-
-You would then invoke `composer` to install dependencies per the previous
-example.
-
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
+Man sollte nach der Installation von ZF2 direkt ein "php composer.phar self-update" ausführen, damit man auch mit der aktuellsten Version vom ZF2 arbeitet.
 
 Web Server Setup
 ----------------
 
-### PHP CLI Server
+Ich würde das Webserverpaket von XAMPP empfehlen, es ist einfach zu installieren und konfigurieren. Es ist erhältlich für Windows xyz, MaxOs und Linux unter:
 
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
-
-    php -S 0.0.0.0:8080 -t public/ public/index.php
-
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
-
-**Note: ** The built-in CLI server is *for development only*.
+http://www.apachefriends.org/de/download.html
 
 ### Apache Setup
 
-To setup apache, setup a virtual host to point to the public/ directory of the
-project and you should be ready to go! It should look something like below:
+Im Unterordner von xampp findet man dann eine httpd-vhosts.conf diese liegt in "xampp/apache/conf/extra/". Hier sollte der folgende XmL-Block ergänzt werden.
 
     <VirtualHost *:80>
         ServerName zf2-tutorial.localhost
